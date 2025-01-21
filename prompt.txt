@@ -1,0 +1,44 @@
+
+
+
+Generate Terraform code to create an AWS EC2 instance with default settings.
+
+Elastic IP association and creation.
+A TLS private key generation and saving it to a local file.
+Creation of an AWS Key Pair using the generated TLS private key.
+Security Group configuration to allow SSH, HTTP, and HTTPS traffic.
+EC2 Instance setup with the specified AMI, instance type, and security group.
+Volume configuration (EBS) for the EC2 instance with specific size and type (gp3).
+User data script to change the SSH port from 22 to 4545.
+Output sensitive details such as the private key content and public key.
+Variables for region, subnet, VPC, instance details, and security group name.
+Subnet ID and availability zone filters for the subnet."
+Make sure to structure the code with the following specifications:
+
+Use aws_eip_association to associate the elastic IP.
+Use aws_eip to create an Elastic IP.
+Use tls_private_key for generating the private key.
+Use aws_key_pair for creating the key pair.
+Use aws_security_group for the security group setup.
+Use aws_instance for EC2 instance creation with a user-data script that modifies SSH configuration.
+When referencing a security group for the EC2 instance, use the `vpc_security_group_ids` attribute and provide the security group ID, not the name. 
+Do not use the `security_groups` attribute with the name of the security group.
+
+Ensure the private key is saved to a local file with restricted permissions.
+Include output blocks for the private key and public key.
+Give different names for the aws resources involved in this project
+Use appropriate variables for region, instance type, subnet ID, VPC ID, and other parameters."
+
+
+
+subnet_zone=["us-west-1c"]
+instance_ami="ami-0657605d763ac72a8"
+instance_type="t2.micro" 
+ebs_vol=8
+instance_name="MyEC2Instance"
+security_gp_name="new-sgrp"
+key_pair_name="terraform-key-1"
+vpc_id="vpc-026f9448505963a1d"
+subnet_id="subnet-097bd08cecf32e773"
+region="us-west-1"
+these are the values for the resources
